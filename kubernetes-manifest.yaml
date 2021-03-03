@@ -62,7 +62,7 @@ spec:
         - --log.level=info
         - --zabbix-addr=ZABBIX_ADDR:10051
         - --default-host=infra
-        - --hosts-path=/etc/zal/sender-config.yml
+        - --hosts-path=/etc/zal/sender-config.yaml
         ports:
         - containerPort: 9095
         volumeMounts:
@@ -79,7 +79,7 @@ metadata:
   name: zal
   namespace: sys-mon
 data:
-  sender-config.yml: |-
+  sender-config.yaml: |-
     # Resolver name to zabbix host mapping
     # web is Alertmanager's resolver name
     # and the mapping is Zabbix host name.
