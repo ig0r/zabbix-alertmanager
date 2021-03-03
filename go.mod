@@ -1,4 +1,4 @@
-module github.com/devopyio/zabbix-alertmanager
+module github.com/mikarnik/zabbix-alertmanager
 
 go 1.12
 

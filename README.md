@@ -3,7 +3,7 @@
 # zabbix-alertmanager
 
 ![Build Status](https://travis-ci.com/devopyio/zabbix-alertmanager.svg?branch=master)
-![Go Report Card](https://goreportcard.com/badge/github.com/devopyio/zabbix-alertmanager)
+![Go Report Card](https://goreportcard.com/badge/github.com/mikarnik/zabbix-alertmanager)
 [![Docker Repository on Quay](https://quay.io/repository/devopyio/zabbix-alertmanager/status "Docker Repository on Quay")](https://quay.io/repository/devopyio/zabbix-alertmanager)
 
 Fully automated [Zabbix](https://www.zabbix.com/) and [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/) integration. 
@@ -19,13 +19,13 @@ Fully automated [Zabbix](https://www.zabbix.com/) and [Prometheus Alertmanager](
 
 ## Deployment
 
-Checkout [kubernetes-manifests.yaml](https://github.com/devopyio/zabbix-alertmanager/blob/master/kubernetes-manifest.yaml) for deployment in Kubernetes. 
+Checkout [kubernetes-manifests.yaml](https://github.com/mikarnik/zabbix-alertmanager/blob/master/kubernetes-manifest.yaml) for deployment in Kubernetes. 
 
-[Releases](https://github.com/devopyio/zabbix-alertmanager/releases) page for binaries.
+[Releases](https://github.com/mikarnik/zabbix-alertmanager/releases) page for binaries.
 
-[grafana.json](https://github.com/devopyio/zabbix-alertmanager/blob/master/grafana.json) for Grafana dashboard.
+[grafana.json](https://github.com/mikarnik/zabbix-alertmanager/blob/master/grafana.json) for Grafana dashboard.
 
-[alerts.yaml](https://github.com/devopyio/zabbix-alertmanager/blob/master/alerts.yaml) for Prometheus alerts.
+[alerts.yaml](https://github.com/mikarnik/zabbix-alertmanager/blob/master/alerts.yaml) for Prometheus alerts.
 
 ## General Info
 
