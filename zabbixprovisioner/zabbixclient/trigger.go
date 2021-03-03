@@ -25,16 +25,16 @@ const (
 
 // https://www.zabbix.com/documentation/2.2/manual/appendix/api/item/definitions
 type Trigger struct {
-	TriggerId   string       `json:"triggerid,omitempty"`
-	Description string       `json:"description"`
-	Expression  string       `json:"expression"`
-	Comments    string       `json:"comments"`
-	URL         string       `json:"url"`
-	ManualClose int32        `json:"manual_close"`
-	Value       ValueType    `json:""`
-	Priority    PriorityType `json:"priority"`
-	Status      StatusType   `json:"status"`
-	Tags        []Tag        `json:"tags"`
+	TriggerId   string `json:"triggerid,omitempty"`
+	Description string `json:"description"`
+	Expression  string `json:"expression"`
+	Comments    string `json:"comments"`
+	URL         string `json:"url"`
+	ManualClose int32  `json:"manual_close"`
+	//Value       ValueType    `json:""`
+	Priority PriorityType `json:"priority"`
+	Status   StatusType   `json:"status"`
+	Tags     []Tag        `json:"tags"`
 }
 
 type Tag struct {
