@@ -189,15 +189,7 @@ func (p *Provisioner) LoadRulesFromPrometheus(hostConfig HostConfig) error {
 
 		// use the alert message from an alert manager as a trigger comment
 		newTrigger.Comments = "{$ITEM.VALUE}"
-
-		// if v, ok := rule.Annotations["summary"]; ok {
-		// 	newTrigger.Comments = v
-		// } else if v, ok := rule.Annotations["message"]; ok {
-		// 	newTrigger.Comments = v
-		// } else if v, ok := rule.Annotations["description"]; ok {
-		// 	newTrigger.Comments = v
-		// }
-
+		
 		if v, ok := rule.Labels["severity"]; ok {
 			newTrigger.Priority = GetZabbixPriority(v)
 		}
