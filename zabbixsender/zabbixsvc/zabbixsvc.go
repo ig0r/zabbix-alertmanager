@@ -108,6 +108,8 @@ func (h *JSONHandler) HandlePost(w http.ResponseWriter, r *http.Request) {
 				value = v
 			} else if v, ok := alert.Annotations["description"]; ok {
 				value = v
+			} else {
+				value = "There is no information from Alert Manager for this item"
 			}
 		}
 
