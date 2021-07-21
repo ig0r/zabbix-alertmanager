@@ -160,7 +160,7 @@ func (p *Provisioner) LoadRulesFromPrometheus(hostConfig HostConfig) error {
 				Key:          key,
 				HostId:       "", //To be filled when the host will be created
 				Type:         2,  //Trapper
-				ValueType:    3,
+				ValueType:    4,  //Text
 				History:      hostConfig.ItemDefaultHistory,
 				Trends:       hostConfig.ItemDefaultTrends,
 				TrapperHosts: hostConfig.ItemDefaultTrapperHosts,
@@ -172,7 +172,7 @@ func (p *Provisioner) LoadRulesFromPrometheus(hostConfig HostConfig) error {
 			State: StateNew,
 			Trigger: zabbix.Trigger{
 				Description: rule.Name,
-				Expression:  fmt.Sprintf("{%s:%s.last()}<>0", newHost.Name, key),
+				Expression:  fmt.Sprintf("{%s:%s.strlen()}>1", newHost.Name, key), // check len of the alert message
 				ManualClose: 1,
 				Tags:        triggerTags,
 			},
@@ -187,14 +187,9 @@ func (p *Provisioner) LoadRulesFromPrometheus(hostConfig HostConfig) error {
 			}
 		}
 
-		if v, ok := rule.Annotations["summary"]; ok {
-			newTrigger.Comments = v
-		} else if v, ok := rule.Annotations["message"]; ok {
-			newTrigger.Comments = v
-		} else if v, ok := rule.Annotations["description"]; ok {
-			newTrigger.Comments = v
-		}
-
+		// use the alert message from an alert manager as a trigger comment
+		newTrigger.Comments = "Alert from prometheus: {ITEM.LASTVALUE}"
+		
 		if v, ok := rule.Labels["severity"]; ok {
 			newTrigger.Priority = GetZabbixPriority(v)
 		}

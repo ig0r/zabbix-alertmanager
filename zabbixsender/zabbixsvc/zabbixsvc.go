@@ -88,9 +88,6 @@ func (h *JSONHandler) HandlePost(w http.ResponseWriter, r *http.Request) {
 	}
 
 	value := "0"
-	if req.Status == "firing" {
-		value = "1"
-	}
 
 	host, ok := h.Hosts[req.Receiver]
 	if !ok {
@@ -102,6 +99,20 @@ func (h *JSONHandler) HandlePost(w http.ResponseWriter, r *http.Request) {
 
 	var metrics []*zabbixsnd.Metric
 	for _, alert := range req.Alerts {
+
+		if req.Status == "firing" {
+			// check all annotations to form proper value string
+			if v, ok := alert.Annotations["summary"]; ok {
+				value = v
+			} else if v, ok := alert.Annotations["message"]; ok {
+				value = v
+			} else if v, ok := alert.Annotations["description"]; ok {
+				value = v
+			} else {
+				value = "There is no information from Alert Manager for this item"
+			}
+		}
+
 		key := fmt.Sprintf("%s.%s", h.KeyPrefix, strings.ToLower(alert.Labels["alertname"]))
 		m := &zabbixsnd.Metric{Host: host, Key: key, Value: value}
 
